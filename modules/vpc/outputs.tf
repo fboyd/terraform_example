@@ -1,0 +1,12 @@
+output "vpc_id"   { value = "${aws_vpc.vpc.id}" }
+output "vpc_cidr" { value = "${aws_vpc.vpc.cidr_block}" }
+output "route_table_internet" { value = "${aws_route_table.internet_access.id}" }
+output "route_tables_nat" { value = ["${aws_route_table.nat_access.*.id}"] }
+output "route_tables_all" { value = "${concat(aws_route_table.internet_access.*.id, aws_route_table.nat_access.*.id)}"}
+output "public_subnet_ids" { value = ["${aws_subnet.public.*.id}"] }
+output "public_subnet_cidr_blocks" { value = ["${aws_subnet.public.*.cidr_block}"] }
+output "private_subnet_ids" { value = ["${aws_subnet.private.*.id}"] }
+output "private_subnet_cidr_blocks" { value = ["${aws_subnet.private.*.cidr_block}"] }
+output "public_subnet_acl" { value = "${aws_network_acl.public.id}" }
+output "private_subnet_acl" { value = "${aws_network_acl.private.id}" }
+output "availability_zones" { value = "${var.availability_zones}"}
